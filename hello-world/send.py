@@ -1,31 +1,21 @@
-# #!/usr/bin/env python
-# import pika
-
-# # create a connection
-# connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
-# # create a channel
-# ch1 = connection.channel()
-# # create a queue
-# ch1.queue_declare(queue='hello')
-
-# # create a basic_publish
-# # create a notification channel
-# ch1.basic_publish(exchange='', routing_key='hello', body='Hello World!')
-
-# print('message sent!')
-
-
-
-
-#!/usr/bin/env python
 import pika
 
-connection = pika.BlockingConnection(
-    pika.ConnectionParameters(host='localhost'))
-channel = connection.channel()
+# create a connection
+conncetion = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
 
-channel.queue_declare(queue='hello')
+# create a channel
+channel = conncetion.channel()
 
-channel.basic_publish(exchange='', routing_key='hello', body='Hello World!')
-print(" [x] Sent 'Hello World!'")
-connection.close()
+# create a queue
+channel.queue_declare(queue='hello-world')
+
+# create a basic_publish
+channel.basic_publish(
+    exchange='',
+    routing_key='hello-world',
+    body='hello world!'
+)
+print('Sent hello world!')
+
+# close the connection
+conncetion.close()
