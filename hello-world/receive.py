@@ -6,13 +6,13 @@ def main():
     channel = connection.channel()
     
     
-    channel.queue_declare(queue='hello-world')
+    channel.queue_declare(queue='hello')
     
     def callback(channel, method, properties, body):
         print(f'received {body}')
         
     channel.basic_consume(
-        queue='hello-world',
+        queue='hello',
         on_message_callback=callback,
         auto_ack=True
     )
