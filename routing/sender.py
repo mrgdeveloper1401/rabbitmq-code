@@ -4,7 +4,7 @@ import pika
 connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
 channals = connection.channel()
 
-channals.exchange_declare(exchange='direct_logs', exchange_type='direct')
+channals.exchange_declare(exchange='direct_logs', exchange_type='direct', durable=True)
 
 messages = {
     'info': 'this is an info message',

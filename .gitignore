@@ -3,3 +3,4 @@ rabbitmq
 /rabbitmq
 /.rabbitmq
 
+rabbitmq-venv/
